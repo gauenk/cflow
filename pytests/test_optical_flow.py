@@ -11,7 +11,7 @@ from pathlib import Path
 # -- swig import --
 import sys
 sys.path.append("./pylib/")
-import oflow
+import cflow
 
 # -- flow viz --
 from flow_vis import flow_to_color
@@ -72,8 +72,8 @@ def load_frame_and_flows(path):
 
 # -- run tests --
 
-compute_optical_flow = oflow.OpticalFlow_ComputeOpticalFlow
-test_numpy_fxn = oflow.OpticalFlow_test_numpy_call
+compute_optical_flow = cflow.OpticalFlow_ComputeOpticalFlow
+test_numpy_fxn = cflow.OpticalFlow_test_numpy_call
 table_path = Path("./data/table/")
 frames,flows = load_frame_and_flows(table_path)
 nframes = len(frames)
@@ -89,9 +89,9 @@ for t in range(nframes-1):
     flow_est = np.zeros(flow_gt.shape).astype(np.double)
 
     h,w,c = im1.shape
-    im1_swig = oflow.swig_ptr(im1)
-    im2_swig = oflow.swig_ptr(im2)
-    flow_est_swig = oflow.swig_ptr(flow_est)
+    im1_swig = cflow.swig_ptr(im1)
+    im2_swig = cflow.swig_ptr(im2)
+    flow_est_swig = cflow.swig_ptr(flow_est)
     compute_optical_flow(im1_swig,im2_swig,flow_est_swig,h,w,c)
 
     # -- visually compare output --

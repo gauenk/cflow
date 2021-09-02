@@ -55,13 +55,13 @@ add_library(OpticalFlowLib SHARED ${CMAKE_BINARY_DIR}/../cflow/cpp/OpticalFlow.c
 set_property(SOURCE ${CMAKE_BINARY_DIR}/../cflow/python/OpticalFlow.i
   PROPERTY CPLUSPLUS ON)
 set_property(SOURCE ${CMAKE_BINARY_DIR}/../cflow/python/OpticalFlow.i
-  PROPERTY SWIG_MODULE_NAME oflow)
-set_property(SOURCE oflow PROPERTY SWIG_USE_TARGET_INCLUDE_DIRECTORIES TRUE)
-swig_add_library(oflow LANGUAGE python OUTPUT_DIR ${SWIG_OUTFILE_DIR} SOURCES ${CMAKE_BINARY_DIR}/../cflow/python/OpticalFlow.i ${HEADER_DIR}/OpticalFlow.h)
-target_include_directories(oflow PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}../cflow/cpp/)
-swig_link_libraries(oflow OpticalFlowLib)
-swig_link_libraries(oflow GaussianPyramidLib)
-swig_link_libraries(oflow ${OpenCV_LIBS})
+  PROPERTY SWIG_MODULE_NAME cflow)
+set_property(SOURCE cflow PROPERTY SWIG_USE_TARGET_INCLUDE_DIRECTORIES TRUE)
+swig_add_library(cflow LANGUAGE python OUTPUT_DIR ${SWIG_OUTFILE_DIR} SOURCES ${CMAKE_BINARY_DIR}/../cflow/python/OpticalFlow.i ${HEADER_DIR}/OpticalFlow.h)
+target_include_directories(cflow PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}../cflow/cpp/)
+swig_link_libraries(cflow OpticalFlowLib)
+swig_link_libraries(cflow GaussianPyramidLib)
+swig_link_libraries(cflow ${OpenCV_LIBS})
 
 
 # 
@@ -81,8 +81,8 @@ copy_to_pylib(gpyramid _gpyramid.so)
 copy_to_pylib(gpyramid gpyramid.py)
 copy_to_pylib(GaussianPyramidLib libGaussianPyramidLib.so)
 copy_to_pylib(OpticalFlowLib libOpticalFlowLib.so)
-copy_to_pylib(oflow _oflow.so)
-copy_to_pylib(oflow oflow.py)
+copy_to_pylib(cflow _cflow.so)
+copy_to_pylib(cflow cflow.py)
 
 
 
