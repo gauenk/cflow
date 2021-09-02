@@ -2,6 +2,17 @@
 
 A Python Wrapper around the Optical Flow method developed during Cei Lui's PhD Thesis. Please visit his webpage ([linked here](https://people.csail.mit.edu/celiu/OpticalFlow/)) for more information. As of Sep 2nd, 2021 this method is ranked 197 on the KITTI 2015 leaderboard for Optical Flow.
 
+# Deps
+
+The wrapper was made on a system running Ubuntu 20 LTS. The project depends on SWIG and OpenCV. To install SWIG:
+
+```
+sudo apt-get install -y swig
+```
+
+OpenCV installs are covered well online.
+
+
 # Install
 
 To install, please use the following instructions from the root directory
