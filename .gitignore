@@ -1,0 +1,13 @@
+*~
+__pycache__
+*~
+*.elc
+*.pyc
+*#*#
+commit.txt
+__pycache__/
+*.so
+build/
+pylib/
+output/
+*zip
